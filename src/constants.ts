@@ -5,8 +5,8 @@ export const FINAL_LIST_AT = VOTING_END
 
 export const SITE_TITLE = "Bangalore's HOT LIST"
 
-export const HOT_DEFINITION =
-  'Hot means: single, emotionally available, kicking ass at work, has a life beyond work, takes care of themselves.'
+export const PAGE_INTRO =
+  'Single, emotionally available, kicking ass at work, life beyond work, takes care of themselves. Nominate someone you know.'
 export const LOGO_URL = '/logo-reverse.png'
 
 export const GENDER_OPTIONS = [
