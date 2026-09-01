@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { LOGO_URL, SITE_TITLE } from '../constants'
 
-export function PageHeading() {
+export function PageHeading({ showTitle = true }: { showTitle?: boolean }) {
   return (
     <div className="page-heading">
       <Link to="/" className="page-heading-logo" aria-label="Meant2Bae home">
         <img src={LOGO_URL} alt="Meant2Bae" className="logo" />
       </Link>
-      <h1 className="page-title">{SITE_TITLE}</h1>
+      {showTitle && <h1 className="page-title">{SITE_TITLE}</h1>}
     </div>
   )
 }

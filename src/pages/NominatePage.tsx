@@ -97,9 +97,11 @@ export function NominatePage() {
 
   return (
     <Layout>
-      <div className="page-card">
+      <div className={submitted ? 'confirmation-screen' : 'page-card'}>
         {submitted ? (
-          <div className="confirmation">
+          <>
+            <PageHeading showTitle={false} />
+            <div className="confirmation">
             <p className="confirmation-lead">
               Thanks — we’ll review nominations before voting opens.
             </p>
@@ -112,7 +114,8 @@ export function NominatePage() {
               </button>
             </div>
             {shareHint && <p className="hint">{shareHint}</p>}
-          </div>
+            </div>
+          </>
         ) : (
           <>
             <PageHeading />

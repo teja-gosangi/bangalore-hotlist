@@ -129,9 +129,25 @@ a {
   text-align: center;
 }
 
+.confirmation-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 140px);
+  animation: fade-in 0.35s ease;
+}
+
+.confirmation-screen .confirmation {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
 .confirmation {
   text-align: center;
-  padding-top: 24px;
 }
 
 .confirmation-lead {
