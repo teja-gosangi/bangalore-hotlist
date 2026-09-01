@@ -58,21 +58,15 @@ a {
 
 .page-heading {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
   margin-bottom: 10px;
 }
 
 .page-heading .page-title {
   margin: 0;
-  flex: 1;
-  min-width: 0;
-}
-
-.page-heading-logo {
-  flex-shrink: 0;
-  margin-top: 4px;
 }
 
 .logo {
@@ -132,6 +126,7 @@ a {
   margin: 0 0 24px;
   color: var(--muted);
   font-size: 1rem;
+  text-align: center;
 }
 
 .confirmation-lead {
@@ -184,7 +179,7 @@ textarea:focus {
 
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 72px;
 }
 
 .gender-toggle {
@@ -266,7 +261,7 @@ fieldset.field {
 }
 
 .btn-submit {
-  align-self: flex-start;
+  align-self: center;
   min-width: 120px;
 }
 

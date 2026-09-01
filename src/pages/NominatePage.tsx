@@ -163,7 +163,7 @@ export function NominatePage() {
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 placeholder="One reason they belong on this list, beyond being single"
-                rows={4}
+                rows={3}
                 required
               />
             </label>
