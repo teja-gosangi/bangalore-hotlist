@@ -7,6 +7,7 @@ import { supabase } from '../lib/supabase'
 import {
   getSiteOrigin,
   nominateShareText,
+  NOMINATE_SHARE_TITLE,
   shareOrCopy,
 } from '../lib/share'
 import {
@@ -77,6 +78,7 @@ export function NominatePage() {
       const result = await shareOrCopy(
         nominateShareText(),
         `${getSiteOrigin()}/`,
+        NOMINATE_SHARE_TITLE,
       )
       setShareHint(result === 'shared' ? 'Shared.' : 'Link copied.')
     } catch {
@@ -110,7 +112,7 @@ export function NominatePage() {
                 Nominate another person
               </button>
               <button type="button" className="btn btn-primary" onClick={handleShareNominate}>
-                Share nominations
+                Ask a friend to nominate
               </button>
             </div>
             {shareHint && <p className="hint">{shareHint}</p>}

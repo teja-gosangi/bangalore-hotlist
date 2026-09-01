@@ -5,10 +5,14 @@ export function getSiteOrigin(): string {
   return 'https://hotlist.meant2bae.com'
 }
 
-export async function shareOrCopy(text: string, url: string): Promise<'shared' | 'copied'> {
+export async function shareOrCopy(
+  text: string,
+  url: string,
+  title?: string,
+): Promise<'shared' | 'copied'> {
   if (typeof navigator !== 'undefined' && navigator.share) {
     try {
-      await navigator.share({ text, url })
+      await navigator.share({ title, text, url })
       return 'shared'
     } catch (err) {
       if ((err as DOMException).name === 'AbortError') throw err
@@ -20,8 +24,10 @@ export async function shareOrCopy(text: string, url: string): Promise<'shared' |
 }
 
 export function nominateShareText(): string {
-  return "Bangalore's HOT LIST is live — nominate someone who belongs on the list."
+  return "Know someone who belongs on Bangalore's HOT LIST? Nominate them here:"
 }
+
+export const NOMINATE_SHARE_TITLE = "Bangalore's HOT LIST"
 
 export function voteShareText(nomineeName: string): string {
   return `Vote for ${nomineeName} on Bangalore's HOT LIST.`
