@@ -20,9 +20,9 @@ export async function shareOrCopy(text: string, url: string): Promise<'shared' |
 }
 
 export function nominateShareText(): string {
-  return 'Bangalore Hot List is live — nominate someone who belongs on the list.'
+  return "Bangalore's HOT LIST is live — nominate someone who belongs on the list."
 }
 
 export function voteShareText(nomineeName: string): string {
-  return `Vote for ${nomineeName} on the Bangalore Hot List.`
+  return `Vote for ${nomineeName} on Bangalore's HOT LIST.`
 }

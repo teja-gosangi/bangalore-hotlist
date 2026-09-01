@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Layout } from '../components/Layout'
 import { PageHeading } from '../components/PageHeading'
-import { GENDER_OPTIONS } from '../constants'
+import { GENDER_OPTIONS, HOT_DEFINITION } from '../constants'
 import type { Gender } from '../constants'
 import { supabase } from '../lib/supabase'
 import {
@@ -119,7 +119,11 @@ export function NominatePage() {
             {shareHint && <p className="hint">{shareHint}</p>}
           </div>
         ) : (
-          <form className="nominate-form" onSubmit={handleSubmit} noValidate>
+          <>
+            <p className="hot-definition">
+              <em>{HOT_DEFINITION}</em>
+            </p>
+            <form className="nominate-form" onSubmit={handleSubmit} noValidate>
             <label className="field">
               <span className="field-label">Nominee’s full name</span>
               <input
@@ -187,6 +191,7 @@ export function NominatePage() {
               {submitting ? 'Submitting…' : 'Submit'}
             </button>
           </form>
+          </>
         )}
       </div>
     </Layout>

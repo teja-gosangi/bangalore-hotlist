@@ -3,7 +3,10 @@ export const VOTING_START = '2026-09-05T05:00:00+05:30' // Sat 5 Sep, 5:00 AM IS
 export const VOTING_END = '2026-09-06T17:00:00+05:30' // Sun 6 Sep, 5:00 PM IST (36h window)
 export const FINAL_LIST_AT = VOTING_END
 
-export const SITE_TITLE = 'Bangalore Hot List'
+export const SITE_TITLE = "Bangalore's HOT LIST"
+
+export const HOT_DEFINITION =
+  'Hot means: single, emotionally available, kicking ass at work, has a life beyond work, takes care of themselves.'
 export const LOGO_URL = '/logo-reverse.png'
 
 export const GENDER_OPTIONS = [

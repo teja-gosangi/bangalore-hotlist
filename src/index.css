@@ -129,9 +129,20 @@ a {
 }
 
 .page-subtitle {
-  margin: 0 0 24px;
+  margin: 0 0 16px;
   color: var(--muted);
   font-size: 1rem;
+}
+
+.hot-definition {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.hot-definition em {
+  font-style: italic;
 }
 
 .confirmation-lead {
