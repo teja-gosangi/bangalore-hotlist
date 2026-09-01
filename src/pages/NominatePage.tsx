@@ -6,9 +6,7 @@ import type { Gender } from '../constants'
 import { supabase } from '../lib/supabase'
 import {
   getSiteOrigin,
-  nominateShareText,
-  NOMINATE_SHARE_TITLE,
-  shareOrCopy,
+  shareNominationInvite,
 } from '../lib/share'
 import {
   isSelfNomination,
@@ -75,12 +73,10 @@ export function NominatePage() {
   async function handleShareNominate() {
     setShareHint(null)
     try {
-      const result = await shareOrCopy(
-        nominateShareText(),
-        `${getSiteOrigin()}/`,
-        NOMINATE_SHARE_TITLE,
-      )
-      setShareHint(result === 'shared' ? 'Shared.' : 'Link copied.')
+      const result = await shareNominationInvite(`${getSiteOrigin()}/`)
+      if (result === 'copied') {
+        setShareHint('Copied!')
+      }
     } catch {
       // user cancelled share sheet
     }

@@ -23,11 +23,25 @@ export async function shareOrCopy(
   return 'copied'
 }
 
-export function nominateShareText(): string {
-  return "Know someone who belongs on Bangalore's HOT LIST? Nominate them here:"
+export function buildNominateShareMessage(url: string): string {
+  return `I just nominated someone for Bangalore's Hot List 👀 Who's on yours? ${url}`
 }
 
-export const NOMINATE_SHARE_TITLE = "Bangalore's HOT LIST"
+export async function shareNominationInvite(url: string): Promise<'shared' | 'copied'> {
+  const message = buildNominateShareMessage(url)
+
+  if (typeof navigator !== 'undefined' && navigator.share) {
+    try {
+      await navigator.share({ text: message })
+      return 'shared'
+    } catch (err) {
+      if ((err as DOMException).name === 'AbortError') throw err
+    }
+  }
+
+  await navigator.clipboard.writeText(message)
+  return 'copied'
+}
 
 export function voteShareText(nomineeName: string): string {
   return `Vote for ${nomineeName} on Bangalore's HOT LIST.`
