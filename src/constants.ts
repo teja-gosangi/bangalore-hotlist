@@ -4,7 +4,7 @@ export const VOTING_END = '2026-09-06T17:00:00+05:30' // Sun 6 Sep, 5:00 PM IST 
 export const FINAL_LIST_AT = VOTING_END
 
 export const SITE_TITLE = 'Bangalore Hot List'
-export const LOGO_URL = 'https://meant2bae.com/profilefix/logo.png'
+export const LOGO_URL = '/logo-reverse.png'
 
 export const GENDER_OPTIONS = [
   { value: 'man' as const, label: 'Man' },

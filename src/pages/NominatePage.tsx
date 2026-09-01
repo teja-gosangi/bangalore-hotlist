@@ -99,7 +99,7 @@ export function NominatePage() {
       <div className="page-card">
         <h1 className="page-title">{SITE_TITLE}</h1>
         <p className="page-subtitle">
-          Who belongs on this list? Nominate someone else — you can’t nominate yourself.
+          Nominate someone you think Bangalore’s single people should know. You can’t nominate yourself.
         </p>
 
         {submitted ? (
@@ -182,8 +182,8 @@ export function NominatePage() {
 
             {error && <p className="form-error" role="alert">{error}</p>}
 
-            <button type="submit" className="btn btn-primary btn-block" disabled={submitting}>
-              {submitting ? 'Submitting…' : 'Submit nomination'}
+            <button type="submit" className="btn btn-primary" disabled={submitting}>
+              {submitting ? 'Submitting…' : 'Submit'}
             </button>
           </form>
         )}
