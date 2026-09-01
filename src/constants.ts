@@ -6,7 +6,7 @@ export const FINAL_LIST_AT = VOTING_END
 export const SITE_TITLE = "Bangalore's HOT LIST"
 
 export const PAGE_INTRO =
-  'Single, emotionally available, kicking ass at work, life beyond work, takes care of themselves. Nominate someone you know.'
+  "You can't nominate yourself. Single, emotionally available, kicking ass at work, life beyond work, takes care of themselves."
 export const LOGO_URL = '/logo-reverse.png'
 
 export const GENDER_OPTIONS = [

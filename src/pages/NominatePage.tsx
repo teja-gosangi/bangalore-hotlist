@@ -17,7 +17,7 @@ import {
 
 export function NominatePage() {
   const [nomineeName, setNomineeName] = useState('')
-  const [gender, setGender] = useState<Gender>('man')
+  const [gender, setGender] = useState<Gender | null>(null)
   const [socialLink, setSocialLink] = useState('')
   const [reason, setReason] = useState('')
   const [nominatorName, setNominatorName] = useState('')
@@ -35,7 +35,7 @@ export function NominatePage() {
     const trimmedReason = reason.trim()
     const trimmedSocial = socialLink.trim()
 
-    if (!trimmedNominee || !trimmedNominator || !trimmedReason || !trimmedSocial) {
+    if (!trimmedNominee || !trimmedNominator || !trimmedReason || !trimmedSocial || !gender) {
       setError('All fields are required.')
       return
     }
@@ -86,7 +86,7 @@ export function NominatePage() {
 
   function resetForm() {
     setNomineeName('')
-    setGender('man')
+    setGender(null)
     setSocialLink('')
     setReason('')
     setNominatorName('')
@@ -119,7 +119,7 @@ export function NominatePage() {
         ) : (
           <form className="nominate-form" onSubmit={handleSubmit} noValidate>
             <label className="field">
-              <span className="field-label">Nominee’s full name</span>
+              <span className="field-label">Who are you nominating?</span>
               <input
                 type="text"
                 value={nomineeName}
