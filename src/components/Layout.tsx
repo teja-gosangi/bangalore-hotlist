@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { LOGO_URL } from '../constants'
 import { isVotingOpen } from '../lib/voting'
 
 interface LayoutProps {
@@ -14,16 +13,13 @@ export function Layout({ children, showVoteNav = false }: LayoutProps) {
 
   return (
     <div className="layout">
-      <header className="site-header">
-        <div className="header-inner">
-          <Link to="/" className="logo-link" aria-label="Meant2Bae home">
-            <img src={LOGO_URL} alt="Meant2Bae" className="logo" />
-          </Link>
-          {voteNavVisible && location.pathname !== '/vote' && (
+      {voteNavVisible && location.pathname !== '/vote' && (
+        <header className="site-header">
+          <div className="header-inner">
             <Link to="/vote" className="header-nav-link">Vote</Link>
-          )}
-        </div>
-      </header>
+          </div>
+        </header>
+      )}
 
       <main className="main">{children}</main>
 

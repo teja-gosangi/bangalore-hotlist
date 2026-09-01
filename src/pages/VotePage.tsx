@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Layout } from '../components/Layout'
-import { GENDER_SECTIONS, SITE_TITLE } from '../constants'
+import { PageHeading } from '../components/PageHeading'
+import { GENDER_SECTIONS } from '../constants'
 import type { Nomination } from '../types'
 import { supabase } from '../lib/supabase'
 import { getSiteOrigin, shareOrCopy, voteShareText } from '../lib/share'
@@ -173,7 +174,7 @@ export function VotePage() {
   return (
     <Layout showVoteNav={votingOpen && hasApproved}>
       <div className="page-card vote-page">
-        <h1 className="page-title">{SITE_TITLE}</h1>
+        <PageHeading />
 
         {afterEnd && finalLive && hasApproved && !showPlaceholder && (
           <>

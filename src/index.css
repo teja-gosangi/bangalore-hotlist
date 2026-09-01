@@ -52,12 +52,31 @@ a {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  padding: 12px 0;
+}
+
+.page-heading {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 14px 0;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.page-heading .page-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.page-heading-logo {
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .logo {
-  height: 32px;
+  height: 24px;
   width: auto;
   display: block;
 }
@@ -130,12 +149,14 @@ a {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  align-items: flex-start;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .field-label {
@@ -227,14 +248,20 @@ textarea {
   border-color: var(--muted);
 }
 
-.btn-block {
+fieldset.field {
   width: 100%;
+}
+
+.btn-submit {
+  align-self: flex-start;
+  min-width: 120px;
 }
 
 .form-error {
   color: #ff6b8a;
   margin: 0;
   font-size: 0.9rem;
+  width: 100%;
 }
 
 .hint {

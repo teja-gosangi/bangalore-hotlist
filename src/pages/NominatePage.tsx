@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Layout } from '../components/Layout'
-import { GENDER_OPTIONS, SITE_TITLE } from '../constants'
+import { PageHeading } from '../components/PageHeading'
+import { GENDER_OPTIONS } from '../constants'
 import type { Gender } from '../constants'
 import { supabase } from '../lib/supabase'
 import {
@@ -97,7 +98,7 @@ export function NominatePage() {
   return (
     <Layout>
       <div className="page-card">
-        <h1 className="page-title">{SITE_TITLE}</h1>
+        <PageHeading />
         <p className="page-subtitle">
           Nominate someone you think Bangalore’s single people should know. You can’t nominate yourself.
         </p>
@@ -182,7 +183,7 @@ export function NominatePage() {
 
             {error && <p className="form-error" role="alert">{error}</p>}
 
-            <button type="submit" className="btn btn-primary" disabled={submitting}>
+            <button type="submit" className="btn btn-primary btn-submit" disabled={submitting}>
               {submitting ? 'Submitting…' : 'Submit'}
             </button>
           </form>
