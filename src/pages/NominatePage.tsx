@@ -98,9 +98,6 @@ export function NominatePage() {
   return (
     <Layout>
       <div className="page-card">
-        <PageHeading />
-        <p className="page-subtitle">{PAGE_INTRO}</p>
-
         {submitted ? (
           <div className="confirmation">
             <p className="confirmation-lead">
@@ -117,7 +114,10 @@ export function NominatePage() {
             {shareHint && <p className="hint">{shareHint}</p>}
           </div>
         ) : (
-          <form className="nominate-form" onSubmit={handleSubmit} noValidate>
+          <>
+            <PageHeading />
+            <p className="page-subtitle">{PAGE_INTRO}</p>
+            <form className="nominate-form" onSubmit={handleSubmit} noValidate>
             <label className="field">
               <span className="field-label">Who are you nominating?</span>
               <input
@@ -188,6 +188,7 @@ export function NominatePage() {
               Nominees are contacted for consent before being published. Nominating someone doesn&apos;t guarantee they&apos;ll appear on the list.
             </p>
           </form>
+          </>
         )}
       </div>
     </Layout>
