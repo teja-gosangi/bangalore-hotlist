@@ -147,7 +147,7 @@ export function NominatePage() {
             </fieldset>
 
             <label className="field">
-              <span className="field-label">Twitter or LinkedIn</span>
+              <span className="field-label">Their Twitter or Linkedin</span>
               <input
                 type="url"
                 value={socialLink}
