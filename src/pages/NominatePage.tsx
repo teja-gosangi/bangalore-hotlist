@@ -184,6 +184,9 @@ export function NominatePage() {
             <button type="submit" className="btn btn-primary btn-submit" disabled={submitting}>
               {submitting ? 'Submitting…' : 'Submit'}
             </button>
+            <p className="form-disclaimer">
+              Nominees are contacted for consent before being published. Nominating someone doesn&apos;t guarantee they&apos;ll appear on the list.
+            </p>
           </form>
         )}
       </div>

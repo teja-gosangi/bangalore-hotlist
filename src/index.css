@@ -265,6 +265,15 @@ fieldset.field {
   min-width: 120px;
 }
 
+.form-disclaimer {
+  width: 100%;
+  margin: 12px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 .form-error {
   color: #ff6b8a;
   margin: 0;
