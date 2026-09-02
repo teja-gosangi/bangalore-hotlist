@@ -16,12 +16,30 @@ create index nominations_status_votes_idx on public.nominations (status, votes d
 
 alter table public.nominations enable row level security;
 
--- Anyone can nominate (insert only as pending)
+-- Anyone can nominate (insert only as pending, votes must be 0)
 create policy "anon_insert_pending_nominations"
   on public.nominations
   for insert
   to anon
-  with check (status = 'pending');
+  with check (status = 'pending' and votes = 0);
+
+-- Block direct UPDATE from public clients (votes only via vote_for_nominee RPC)
+revoke update on table public.nominations from anon, authenticated;
+
+create or replace function public.nominations_force_votes_zero()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.votes := 0;
+  return new;
+end;
+$$;
+
+create trigger nominations_votes_zero_before_insert
+  before insert on public.nominations
+  for each row
+  execute function public.nominations_force_votes_zero();
 
 -- Anyone can read approved nominees (vote list)
 create policy "anon_select_approved_nominations"

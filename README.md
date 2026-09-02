@@ -8,9 +8,27 @@ Nomination + voting microsite for Meant2Bae (Vite, React, TypeScript, Supabase).
 
 Create a fresh Supabase project (not the Dashboard project).
 
-Run the SQL in `supabase/migrations/001_nominations.sql` in the Supabase SQL Editor.
+Run migrations in order in the Supabase SQL Editor:
 
-### 2. Environment
+1. `supabase/migrations/001_nominations.sql`
+2. `supabase/migrations/002_lock_down_votes.sql` — fixes vote stuffing on insert
+3. `supabase/migrations/003_rate_limit.sql` — **only after** Edge Function is deployed (see below)
+
+### 2. Edge Function (rate limit)
+
+Nominations go through `submit-nomination` (3 per IP / hour, 10 / day).
+
+```bash
+npx supabase login
+npx supabase link --project-ref YOUR_PROJECT_REF
+npx supabase functions deploy submit-nomination
+```
+
+Or in Supabase Dashboard → Edge Functions → deploy `supabase/functions/submit-nomination/index.ts`.
+
+**Important:** Deploy the function **before** running `003_rate_limit.sql`, which removes direct anon inserts.
+
+### 3. Environment
 
 Copy `.env.example` to `.env.local` and fill in:
 
@@ -18,7 +36,7 @@ Copy `.env.example` to `.env.local` and fill in:
 - `VITE_SUPABASE_ANON_KEY`
 - `VITE_SITE_URL` (optional, for share links)
 
-### 3. Local dev
+### 4. Local dev
 
 ```bash
 npm install
