@@ -4,7 +4,7 @@ import path from 'node:path'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const htmlPath = path.join(root, 'scripts', 'og-image.html')
-const outputPath = path.join(root, 'public', 'og-image.png')
+const outputPath = path.join(root, 'public', 'social-card.png')
 
 const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } })
