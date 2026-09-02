@@ -9,6 +9,7 @@
   --primary-hover: #d01058;
   --highlight: rgba(184, 8, 73, 0.35);
   --radius: 12px;
+  --font-heading: 'Cabinet Grotesk', system-ui, sans-serif;
   --font-display: 'Urbanist', system-ui, sans-serif;
   --font-body: 'Lato', system-ui, sans-serif;
 }
@@ -115,7 +116,7 @@ a {
 }
 
 .page-title {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(1.75rem, 5vw, 2.25rem);
   font-weight: 800;
   margin: 0 0 10px;
