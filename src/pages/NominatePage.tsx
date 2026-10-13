@@ -3,8 +3,7 @@ import { Layout } from '../components/Layout'
 import { PageHeading } from '../components/PageHeading'
 import { GENDER_OPTIONS, PAGE_INTRO } from '../constants'
 import type { Gender } from '../constants'
-import { readFunctionErrorMessage } from '../lib/functions'
-import { supabase } from '../lib/supabase'
+import { submitNomination } from '../lib/api'
 import {
   getSiteOrigin,
   shareNominationInvite,
@@ -52,20 +51,18 @@ export function NominatePage() {
 
     setSubmitting(true)
 
-    const { data, error: invokeError } = await supabase.functions.invoke('submit-nomination', {
-      body: {
-        nominee_name: trimmedNominee,
-        gender,
-        twitter_or_linkedin: normalizeSocialLink(trimmedSocial),
-        reason: trimmedReason,
-        nominator_name: trimmedNominator,
-      },
+    const { error: submitError } = await submitNomination({
+      nominee_name: trimmedNominee,
+      gender,
+      twitter_or_linkedin: normalizeSocialLink(trimmedSocial),
+      reason: trimmedReason,
+      nominator_name: trimmedNominator,
     })
 
     setSubmitting(false)
 
-    if (invokeError || data?.error) {
-      setError(await readFunctionErrorMessage(invokeError, data))
+    if (submitError) {
+      setError(submitError)
       return
     }
 

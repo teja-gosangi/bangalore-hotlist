@@ -4,7 +4,7 @@ import { Layout } from '../components/Layout'
 import { PageHeading } from '../components/PageHeading'
 import { GENDER_SECTIONS } from '../constants'
 import type { Nomination } from '../types'
-import { supabase } from '../lib/supabase'
+import { fetchApprovedNominees, voteForNominee } from '../lib/api'
 import { getSiteOrigin, shareOrCopy, voteShareText } from '../lib/share'
 import {
   formatVotingOpensLabel,
@@ -36,12 +36,12 @@ function NomineeCard({
     setVoteError(null)
     setVoting(true)
 
-    const { error } = await supabase.rpc('vote_for_nominee', { nominee_id: nominee.id })
+    const { error } = await voteForNominee(nominee.id)
 
     setVoting(false)
 
     if (error) {
-      setVoteError('Could not record vote. Try again.')
+      setVoteError(error)
       return
     }
 
@@ -118,17 +118,12 @@ export function VotePage() {
     setLoading(true)
     setFetchError(null)
 
-    const { data, error } = await supabase
-      .from('nominations')
-      .select('*')
-      .eq('status', 'approved')
-      .order('votes', { ascending: false })
-
-    if (error) {
-      setFetchError(error.message)
+    try {
+      const data = await fetchApprovedNominees()
+      setNominees(data)
+    } catch (err) {
+      setFetchError(err instanceof Error ? err.message : 'Could not load nominees.')
       setNominees([])
-    } else {
-      setNominees((data as Nomination[]) ?? [])
     }
 
     setLoading(false)

@@ -1,4 +1,4 @@
-/** Voting window — also update supabase/migrations/001_nominations.sql vote_for_nominee() */
+/** Voting window — also update sheets/Code.gs VOTING_START / VOTING_END */
 export const VOTING_START = '2026-09-05T05:00:00+05:30' // Sat 5 Sep, 5:00 AM IST
 export const VOTING_END = '2026-09-06T17:00:00+05:30' // Sun 6 Sep, 5:00 PM IST (36h window)
 export const FINAL_LIST_AT = VOTING_END
