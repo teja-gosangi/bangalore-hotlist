@@ -1,22 +1,4 @@
-export type SheetsNomination = {
-  id: string
-  created_at: string
-  status: 'pending' | 'approved' | 'rejected'
-  nominee_name: string
-  gender: 'man' | 'woman' | 'other'
-  twitter_or_linkedin: string
-  reason: string
-  nominator_name: string
-  votes: number
-}
-
-export type SheetsResponse = {
-  ok?: boolean
-  error?: string
-  nominees?: SheetsNomination[]
-}
-
-export async function callSheets(body: Record<string, unknown>): Promise<SheetsResponse> {
+export async function callSheets(body) {
   const url = process.env.SHEETS_WEBHOOK_URL
   const secret = process.env.SHEETS_WEBHOOK_SECRET
   if (!url || !secret) {
@@ -32,7 +14,7 @@ export async function callSheets(body: Record<string, unknown>): Promise<SheetsR
 
   const text = await res.text()
   try {
-    return JSON.parse(text) as SheetsResponse
+    return JSON.parse(text)
   } catch {
     const short = text.length > 300 ? `${text.slice(0, 300)}…` : text
     return {

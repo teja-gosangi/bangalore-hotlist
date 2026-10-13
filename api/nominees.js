@@ -1,7 +1,7 @@
-import { callSheets } from './_lib/sheets'
+import { callSheets } from './_lib/sheets.js'
 
 export default {
-  async fetch(request: Request) {
+  async fetch(request) {
     if (request.method !== 'GET') {
       return Response.json({ error: 'Method not allowed' }, { status: 405, headers: { Allow: 'GET' } })
     }

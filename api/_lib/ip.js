@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 
-export function hashClientIp(request: Request): string {
+export function hashClientIp(request) {
   const forwarded = request.headers.get('x-forwarded-for')
   const ip =
     forwarded?.split(',')[0]?.trim() ||

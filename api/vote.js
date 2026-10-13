@@ -1,13 +1,13 @@
-import { callSheets } from './_lib/sheets'
+import { callSheets } from './_lib/sheets.js'
 
 export default {
-  async fetch(request: Request) {
+  async fetch(request) {
     if (request.method !== 'POST') {
       return Response.json({ error: 'Method not allowed' }, { status: 405, headers: { Allow: 'POST' } })
     }
 
-    const body = (await request.json().catch(() => ({}))) as { nominee_id?: unknown }
-    const nomineeId = String(body.nominee_id ?? '').trim()
+    const body = await request.json().catch(() => ({}))
+    const nomineeId = String(body?.nominee_id ?? '').trim()
     if (!nomineeId) {
       return Response.json({ error: 'Nominee is required.' }, { status: 400 })
     }

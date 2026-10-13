@@ -1,25 +1,15 @@
-export type Gender = 'man' | 'woman' | 'other'
-
-export type NominationInput = {
-  nominee_name: string
-  nominator_name: string
-  reason: string
-  gender: Gender
-  twitter_or_linkedin: string
-}
-
-function normalizeName(value: string): string {
+function normalizeName(value) {
   return value.trim().replace(/\s+/g, ' ').toLowerCase()
 }
 
-function normalizeSocialLink(raw: string): string {
+function normalizeSocialLink(raw) {
   const trimmed = raw.trim()
   if (/^https?:\/\//i.test(trimmed)) return trimmed
   if (trimmed.startsWith('www.')) return `https://${trimmed}`
   return `https://${trimmed}`
 }
 
-function isValidSocialLink(value: string): boolean {
+function isValidSocialLink(value) {
   try {
     const host = new URL(normalizeSocialLink(value)).hostname.toLowerCase()
     return (
@@ -33,15 +23,12 @@ function isValidSocialLink(value: string): boolean {
   }
 }
 
-export function validateNomination(body: Partial<NominationInput>): {
-  error?: string
-  data?: NominationInput
-} {
-  const nominee_name = body.nominee_name?.trim() ?? ''
-  const nominator_name = body.nominator_name?.trim() ?? ''
-  const reason = body.reason?.trim() ?? ''
-  const social = body.twitter_or_linkedin?.trim() ?? ''
-  const gender = body.gender
+export function validateNomination(body) {
+  const nominee_name = String(body?.nominee_name ?? '').trim()
+  const nominator_name = String(body?.nominator_name ?? '').trim()
+  const reason = String(body?.reason ?? '').trim()
+  const social = String(body?.twitter_or_linkedin ?? '').trim()
+  const gender = body?.gender
 
   if (!nominee_name || !nominator_name || !reason || !social || !gender) {
     return { error: 'All fields are required.' }

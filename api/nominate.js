@@ -1,9 +1,9 @@
-import { hashClientIp } from './_lib/ip'
-import { callSheets } from './_lib/sheets'
-import { validateNomination } from './_lib/validate'
+import { hashClientIp } from './_lib/ip.js'
+import { callSheets } from './_lib/sheets.js'
+import { validateNomination } from './_lib/validate.js'
 
 export default {
-  async fetch(request: Request) {
+  async fetch(request) {
     if (request.method !== 'POST') {
       return Response.json({ error: 'Method not allowed' }, { status: 405, headers: { Allow: 'POST' } })
     }
